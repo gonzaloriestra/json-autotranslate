@@ -6,6 +6,7 @@
   "license": "MIT",
   "type": "module",
   "module": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
     "test": "jest",
