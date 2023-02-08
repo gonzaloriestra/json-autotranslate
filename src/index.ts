@@ -42,7 +42,6 @@ commander
   .option(
     '-o, --target-languages <sourceLang>',
     'specify the target languages',
-    'es',
   )
   .option(
     '-t, --type <key-based|natural|auto>',
