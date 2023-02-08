@@ -1,6 +1,6 @@
 import { decode } from 'html-entities';
 import fetch from 'node-fetch';
-import {URL} from 'url'
+
 import { TranslationService, TranslationResult } from '.';
 import {
   replaceInterpolations,
@@ -62,12 +62,12 @@ export class DeepL implements TranslationService {
     return this.formatLanguages(supportedLangauges);
   }
 
-  formatLanguages(languages: Array<{ language: string, name: string, supports_formality: boolean}>): Set<string> {
+  formatLanguages(languages: Array<{ language: string, name: string, supports_formality: boolean}>) {
     // DeepL supports e.g. either EN-US or EN as language code, but only returns EN-US
     // so we add both variants to the array and filter duplicates later.
     const languageCodes = languages.flatMap((l) => [
       l.language,
-      l.language.split('-')[0] as string,
+      l.language.split('-')[0],
     ]);
     return new Set(languageCodes.map((l) => l.toLowerCase()));
   }
