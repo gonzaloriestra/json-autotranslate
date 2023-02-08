@@ -40,6 +40,11 @@ commander
     'en',
   )
   .option(
+    '-o, --target-languages <sourceLang>',
+    'specify the target languages',
+    'es',
+  )
+  .option(
     '-t, --type <key-based|natural|auto>',
     `specify the file structure type`,
     /^(key-based|natural|auto)$/,
@@ -79,11 +84,11 @@ commander
   )
   .parse(process.argv);
 
-export const translate = async (
+const translate = async (
   inputDir: string = '.',
   cacheDir: string = '.json-autotranslate-cache',
   sourceLang: string = 'en',
-  targetLangs: string[],
+  targetLangs: string,
   deleteUnusedStrings = false,
   fileType: FileType = 'auto',
   dirStructure: DirectoryStructure = 'default',
@@ -96,7 +101,7 @@ export const translate = async (
   const workingDir = path.resolve(process.cwd(), inputDir);
   const resolvedCacheDir = path.resolve(process.cwd(), cacheDir);
   const availableLanguages = getAvailableLanguages(workingDir, dirStructure);
-  const targetLanguages = targetLangs || availableLanguages.filter((f) => f !== sourceLang);
+  const targetLanguages = targetLangs.split(',') || availableLanguages.filter((f) => f !== sourceLang);
 
   if (!fs.existsSync(resolvedCacheDir)) {
     fs.mkdirSync(resolvedCacheDir);
@@ -385,6 +390,7 @@ translate(
   commander.input,
   commander.cacheDir,
   commander.sourceLanguage,
+  commander.targetLanguages,
   commander.deleteUnusedStrings,
   commander.type,
   commander.directoryStructure,
