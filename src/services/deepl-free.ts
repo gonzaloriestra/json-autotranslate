@@ -1,6 +1,6 @@
 import { decode } from 'html-entities';
 import fetch from 'node-fetch';
-import {URL} from 'url'
+
 import { TranslationService, TranslationResult } from '.';
 import {
   replaceInterpolations,
@@ -36,7 +36,7 @@ export class DeepLFree implements TranslationService {
     this.decodeEscapes = decodeEscapes;
   }
 
-  async fetchLanguages(): Promise<Set<string>> {
+  async fetchLanguages() {
     const url = new URL(`${API_ENDPOINT}/languages`);
     url.searchParams.append('auth_key', this.apiKey);
 
