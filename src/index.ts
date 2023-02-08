@@ -100,7 +100,7 @@ const translate = async (
   const workingDir = path.resolve(process.cwd(), inputDir);
   const resolvedCacheDir = path.resolve(process.cwd(), cacheDir);
   const availableLanguages = getAvailableLanguages(workingDir, dirStructure);
-  const targetLanguages = targetLangs.split(',') || availableLanguages.filter((f) => f !== sourceLang);
+  const targetLanguages = targetLangs?.split(',') || availableLanguages.filter((f) => f !== sourceLang);
 
   if (!fs.existsSync(resolvedCacheDir)) {
     fs.mkdirSync(resolvedCacheDir);
