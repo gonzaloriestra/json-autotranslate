@@ -5,6 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "type": "module",
+  "module": "src/index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
     "test": "jest",
