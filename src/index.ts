@@ -79,10 +79,11 @@ commander
   )
   .parse(process.argv);
 
-const translate = async (
+export const translate = async (
   inputDir: string = '.',
   cacheDir: string = '.json-autotranslate-cache',
   sourceLang: string = 'en',
+  targetLangs: string[],
   deleteUnusedStrings = false,
   fileType: FileType = 'auto',
   dirStructure: DirectoryStructure = 'default',
@@ -95,7 +96,7 @@ const translate = async (
   const workingDir = path.resolve(process.cwd(), inputDir);
   const resolvedCacheDir = path.resolve(process.cwd(), cacheDir);
   const availableLanguages = getAvailableLanguages(workingDir, dirStructure);
-  const targetLanguages = availableLanguages.filter((f) => f !== sourceLang);
+  const targetLanguages = targetLangs || availableLanguages.filter((f) => f !== sourceLang);
 
   if (!fs.existsSync(resolvedCacheDir)) {
     fs.mkdirSync(resolvedCacheDir);
