@@ -4,6 +4,7 @@
   "version": "1.10.5",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "start": "ts-node src/index.ts",
     "test": "jest",
