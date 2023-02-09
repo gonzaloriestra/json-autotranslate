@@ -260,7 +260,7 @@ export const translate = async (
 
       case 'ngx-translate':
         const sourceFile = templateFiles.find(
-          (f) => f.name === `${sourceLang}.json`,
+          (f) => f.name.match(new RegExp(`${sourceLang}(\..*)?\.json`)),
         );
         if (!sourceFile) {
           throw new Error('Could not find source file. This is a bug.');

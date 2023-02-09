@@ -26,7 +26,7 @@ export const getAvailableLanguages = (directory: string, directoryStructure: Dir
     case 'ngx-translate':
       return directoryContent
         .filter(f => f.endsWith('.json'))
-        .map(f => f.slice(0, -5));
+        .map(f => f.slice(0, f.indexOf('.')));
   }
 }
 
