@@ -267,7 +267,7 @@ export const translate = async (
         }
         const [addedTranslations, removedTranslations] = await translateContent(
           sourceFile,
-          templateFiles.find((f) => f.name === `${language}.json`),
+          templateFiles.find((f) => f.name.match(new RegExp(`${language}(\..*)?\.json`))),
         );
 
         totalAddedTranslations += addedTranslations;
