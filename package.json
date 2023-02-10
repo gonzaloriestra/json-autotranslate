@@ -30,12 +30,8 @@
     "lib/*"
   ],
   "bin": "lib/cli.js",
-  "exports": {
-    ".": {
-      "import": "./lib/index.js",
-      "types": "./lib/index.d.ts"
-    }
-  },
+  "exports": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "dependencies": {
     "@aws-sdk/client-translate": "^3.52.0",
     "@google-cloud/translate": "^6.0.3",
