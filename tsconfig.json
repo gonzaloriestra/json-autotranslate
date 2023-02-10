@@ -9,5 +9,5 @@
     "strict": false,
     "noImplicitAny": false
   },
-  "files": ["src/index.ts"]
+  "files": ["src/index.ts", "src/cli.ts"]
 }

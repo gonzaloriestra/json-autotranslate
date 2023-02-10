@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "ts-node src/cli.ts",
     "test": "jest",
     "build": "tsc",
     "prepublishOnly": "tsc"
@@ -29,6 +29,7 @@
   "files": [
     "lib/*"
   ],
+  "bin": "lib/cli.js",
   "exports": {
     ".": {
       "import": "./lib/index.js",

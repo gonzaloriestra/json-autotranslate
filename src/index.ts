@@ -1,15 +1,3 @@
-#!/usr/bin/env node
-
-import chalk from 'chalk';
-import commander from 'commander';
-import * as flatten from 'flattenjs';
-import * as fs from 'fs';
-import { omit } from 'lodash';
-import * as path from 'path';
-import { diff } from 'deep-object-diff';
-import ncp from 'ncp';
-
-import { serviceMap, TranslationService } from './services';
 import {
   loadTranslations,
   getAvailableLanguages,
@@ -19,9 +7,15 @@ import {
   DirectoryStructure,
   TranslatableFile,
 } from './util/file-system';
+import { serviceMap, TranslationService } from './services';
 import { matcherMap } from './matchers';
-
-require('dotenv').config();
+import * as path from 'path';
+import * as fs from 'fs';
+import chalk from 'chalk';
+import * as flatten from 'flattenjs';
+import { diff } from 'deep-object-diff';
+import ncp from 'ncp';
+import { omit } from 'lodash';
 
 export const translate = async (
   inputDir: string = '.',
@@ -429,3 +423,4 @@ function createTranslator(
     ];
   };
 }
+
